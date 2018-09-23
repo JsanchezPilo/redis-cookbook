@@ -15,11 +15,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-include_recipe  'search_helpers'
 
   master = search('node', 'tags:redis_master'\
                   " AND chef_environment:#{node.chef_environment}")
-  node.set['redis-multi']['redis_master'] = best_ip_for(master.first)
+  node.set['redis']['redis_master'] = master.first["ec2"]["local_ipv4"]
 
 %w(redis-server).each do |pkg|
   package pkg do
