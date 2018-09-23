@@ -184,7 +184,7 @@ dir <%= node['redis']['dir'] %>
 # so for example it is possible to configure the slave to save the DB with a
 # different interval, or to listen to another port, and so on.
 #
-<%= slaveof node['redis']['redis_master'] node['redis']['port'] %>
+slaveof <%= node['redis']['redis_master'] %> <%=node['redis']['port'] %>
 
 # If the master is password protected (using the "requirepass" configuration
 # directive below) it is possible to tell the slave to authenticate before
