@@ -16,7 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-search(:node, 'tags:redis_master',
+search(:node, "tags:redis_master",
   :filter_result => { 'name' => [ 'name' ],
                       'ip' => [ 'ipaddress' ],
                       'kernel_version' => [ 'kernel', 'version' ]
