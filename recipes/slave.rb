@@ -22,14 +22,12 @@ search(:node, 'tag:redis_master',
                       'kernel_version' => [ 'kernel', 'version' ]
                     }
       ).each do |result|
-  puts result['name']
-  puts result['ip']
-  puts result['kernel_version']
+  node.set['redis']['redis_master']  = result['ip']
 end
 
 
-  master = search('node', 'tags:redis_master')
-  node.set['redis']['redis_master'] = master.first['ipaddress']
+  #master = search('node', 'tags:redis_master')
+  #node.set['redis']['redis_master'] = master.first['ipaddress']
 %w(redis-server).each do |pkg|
   package pkg do
     action :upgrade
