@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "apt": ">= 0.0.0",
-    "chef-sugar" : ">= 0.0.0"
+    "chef-sugar" : "= 2.0.0"
   },
   "recommendations": {
   },
