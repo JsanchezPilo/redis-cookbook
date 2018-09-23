@@ -191,7 +191,7 @@ dir <%= node['redis']['dir'] %>
 # starting the replication synchronization process, otherwise the master will
 # refuse the slave request.
 #
-# masterauth <master-password>
+masterauth 10Losere10
 
 # When a slave loses its connection with the master, or when the replication
 # is still in progress, the slave can act in two different ways:
