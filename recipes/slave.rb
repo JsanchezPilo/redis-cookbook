@@ -16,14 +16,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-search(:node, 'recipes:master',
-  :filter_result => { 'name' => [ 'name' ],
-                      'ip' => [ 'ipaddress' ],
-                      'kernel_version' => [ 'kernel', 'version' ]
-                    }
-      ).each do |result|
-  node.set['redis']['redis_master']  = result['ip']
-end
+master = search(:node, "tags:cluster").first
+Chef::Log.info("**********The public IP address is: '#{master[:private_ip]}'**********")
+
+  node.set['redis']['redis_master']  = master[:private_ip]
 
 
   #master = search('node', 'tags:redis_master')
