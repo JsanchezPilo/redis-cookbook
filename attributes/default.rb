@@ -9,3 +9,4 @@ default['redis']['databases']         = '16'
 default['redis']['rdbcompression']    = 'yes'
 default['redis']['dbfilename']        = 'dump.rdb'
 default['redis']['dir']               = '/var/lib/redis'
+
