@@ -23,13 +23,13 @@ if Chef::Config[:solo]
   errmsg = 'This recipe uses search if master attribute is not set. \
    Chef Solo does not support search.'
   Chef::Log.warn(errmsg)
-elsif node.deep_fetch('redis-multi', 'redis_master').nil?
+elsif node.deep_fetch('redis', 'redis_master').nil?
   master = search('node', 'tags:redis_master'\
                   " AND chef_environment:#{node.chef_environment}")
 
   if !master.nil? && master.count >= 1
     Chef::Log.warn('Multiple servers tagged as master found!') if master.count > 1
-    node.set['redis-multi']['redis_master'] = best_ip_for(master.first)
+    node.set['redis']['redis_master'] = best_ip_for(master.first)
   else
     errmsg = 'Did not find a Redis master to use, but one was not set'
     Chef::Application.fatal!(errmsg, 1)
@@ -38,6 +38,6 @@ elsif node.deep_fetch('redis-multi', 'redis_master').nil?
     # problems or an outage
   end
 else
-  str_master = node['redis-multi']['redis_master']
+  str_master = node['redis']['redis_master']
   Chef::Log.info("Master Redis server was already set to #{str_master}")
 end
