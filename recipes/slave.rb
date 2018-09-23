@@ -16,6 +16,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+search(:node, 'tag:redis_master',
+  :filter_result => { 'name' => [ 'name' ],
+                      'ip' => [ 'ipaddress' ],
+                      'kernel_version' => [ 'kernel', 'version' ]
+                    }
+      ).each do |result|
+  puts result['name']
+  puts result['ip']
+  puts result['kernel_version']
+end
+
+
   master = search('node', 'tags:redis_master')
   node.set['redis']['redis_master'] = master.first['ipaddress']
 %w(redis-server).each do |pkg|
