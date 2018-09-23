@@ -2,6 +2,15 @@ source 'https://rubygems.org'
 
 gem 'berkshelf'
 
+
+group :unit do
+
+  gem 'chef-sugar', '= 2.0.0'
+  # hardcode the version for now until 404s are resolved:
+  # https://github.com/sethvargo/chefspec/issues/472
+  gem 'chef-zero', '= 2.0.2'
+end
+
 # Uncomment these lines if you want to live on the Edge:
 #
 # group :development do
