@@ -27,7 +27,7 @@ service 'redis-server' do
   action [:enable, :start]
 end
 
-template '/etc/redis/redis.conf' do
+template '/etc/redis/redis.slave.conf' do
   source 'redis.conf.erb'
   owner 'root'
   group 0
