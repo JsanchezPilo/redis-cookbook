@@ -34,3 +34,6 @@ template '/etc/redis/redis.conf' do
   mode 00644
   notifies :restart, 'service[redis-server]', :immediately
 end
+
+tag('redis_master')
+tag('redis')
