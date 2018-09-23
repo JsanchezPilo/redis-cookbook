@@ -15,7 +15,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-include_recipe 'redis-cookbook::_find_master'
+
+
+  master = search('node', 'tags:redis_master'\
+                  " AND chef_environment:#{node.chef_environment}")
+  node.set['redis-multi']['redis_master'] = best_ip_for(master.first)
 
 %w(redis-server).each do |pkg|
   package pkg do
