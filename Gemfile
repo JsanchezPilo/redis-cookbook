@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "chef", path: "."
+
 gem 'berkshelf'
 
 
