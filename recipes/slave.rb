@@ -15,7 +15,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+include_recipe  'search_helpers'
 
   master = search('node', 'tags:redis_master'\
                   " AND chef_environment:#{node.chef_environment}")
