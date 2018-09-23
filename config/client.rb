@@ -1,1 +1,1 @@
-no_lazy_load    true
+no_lazy_load   = true
