@@ -16,9 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-  master = search('node', 'tags:redis_master'\
-                  " AND chef_environment:#{node.chef_environment}")
-  node.set['redis']['redis_master'] = master.first.ipaddress
+  master = search('node', 'tags:redis_master')
+  node.set['redis']['redis_master'] = master.first['ipaddress']
 %w(redis-server).each do |pkg|
   package pkg do
     action :upgrade
