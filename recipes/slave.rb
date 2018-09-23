@@ -15,6 +15,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+include_recipe 'redis-cookbook::_find_master'
 
 %w(redis-server).each do |pkg|
   package pkg do
