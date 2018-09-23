@@ -35,5 +35,5 @@ template '/etc/redis/redis.conf' do
   notifies :restart, 'service[redis-server]', :immediately
 end
 
-tag('redis_master')
+tag('redis_slave')
 tag('redis')
