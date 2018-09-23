@@ -18,8 +18,7 @@
 
   master = search('node', 'tags:redis_master'\
                   " AND chef_environment:#{node.chef_environment}")
-  node.set['redis']['redis_master'] = '172.31.39.87'
-
+  node.set['redis']['redis_master'] = 'master.first["ipaddress"]
 %w(redis-server).each do |pkg|
   package pkg do
     action :upgrade
