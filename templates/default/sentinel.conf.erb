@@ -67,7 +67,7 @@ port 26379
 #
 # Note: master name should not include special characters or spaces.
 # The valid charset is A-z 0-9 and the three characters ".-_".
-sentinel monitor mymaster 172.31.39.87 6379 2
+sentinel monitor mymaster <%= node['redis']['redis_master'] %> <%=node['redis']['port'] %> 2
 
 sentinel auth-pass mymaster 10Losere10
 #
