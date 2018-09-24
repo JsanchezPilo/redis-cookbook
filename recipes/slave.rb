@@ -44,7 +44,7 @@ template '/etc/redis/sentinel.conf' do
   owner 'root'
   group 0
   mode 00644
-  notifies :restart, 'service[redis-sentinel]', :immediately
+  notifies :restart, 'service[redis-server]', :immediately
 end
 
 template '/etc/redis/redis.conf' do
