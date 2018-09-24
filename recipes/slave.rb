@@ -30,9 +30,17 @@ Chef::Log.info("**********The public IP address is: '#{master[:private_ip]}'****
   end
 end
 
-service 'redis-server /etc/redis/redis.conf --sentinel' do
+service 'redis-server' do
   supports :status => 'true', :restart => 'true', :stop => 'true'
   action [:enable, :start]
+end
+
+template '/etc/redis/sentinel.conf' do
+  source 'sentinel.conf.erb'
+  owner 'root'
+  group 0
+  mode 00644
+  notifies :restart, 'service[redis-server]', :immediately
 end
 
 template '/etc/redis/redis.conf' do
