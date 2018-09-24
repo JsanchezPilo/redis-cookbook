@@ -32,6 +32,7 @@ end
 
 
 service 'redis-server' do
+  init_command 'redis-server /etc/redis/sentinel.conf --sentinel'
   supports :status => 'true', :restart => 'true', :stop => 'true'
   action [:enable, :start]
 end
