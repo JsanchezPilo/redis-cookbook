@@ -48,7 +48,7 @@ port 26379
 # For Redis Sentinel to chdir to /tmp at startup is the simplest thing
 # for the process to don't interfere with administrative tasks such as
 # unmounting filesystems.
-dir /tmp
+#dir /tmp
 
 # sentinel monitor <master-name> <ip> <redis-port> <quorum>
 #
@@ -202,4 +202,4 @@ sentinel failover-timeout mymaster 180000
 # where clients can set the script to anything and trigger a failover in order
 # to get the program executed.
 
-sentinel deny-scripts-reconfig yes
+#sentinel deny-scripts-reconfig yes
