@@ -30,9 +30,15 @@ Chef::Log.info("**********The public IP address is: '#{master[:private_ip]}'****
   end
 end
 
-service 'redis-server' do
-  supports :status => 'true', :restart => 'true', :stop => 'true'
-  action [:enable, :start]
+
+
+systemd
+    service 'redis-server' do
+      execstart   '/etc/redis/redis-server /etc/redis/sentinel.conf --sentinel --daemonize no'
+      user 'redis'
+      group 'redis'
+      provider Chef::Provider::Service::Systemd
+      supports start: true, stop: true, restart: true, status: true
 end
 
 template '/etc/redis/sentinel.conf' do
