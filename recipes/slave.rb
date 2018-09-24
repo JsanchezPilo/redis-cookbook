@@ -32,17 +32,25 @@ end
 
 
 service 'redis-server' do
+  supports :status => 'true', :restart => 'true', :stop => 'true'
+  action [:enable, :start]
+end
+
+
+service 'redis-sentinel' do
   start_command 'redis-server /etc/redis/sentinel.conf --sentinel'
   supports :status => 'true', :restart => 'true', :stop => 'true'
   action [:enable, :start]
 end
+
+
 
 template '/etc/redis/sentinel.conf' do
   source 'sentinel.conf.erb'
   owner 'root'
   group 0
   mode 00644
-  notifies :restart, 'service[redis-server]', :immediately
+  notifies :restart, 'service[redis-sentinel]', :immediately
 end
 
 template '/etc/redis/redis.conf' do
